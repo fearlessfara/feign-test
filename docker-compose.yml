@@ -1,0 +1,36 @@
+version: "3"
+services:
+  parent:
+    container_name: gateway
+    build: gateway
+    image: gateway
+    ports:
+      - 8080:8080
+    depends_on:
+      - eureka
+    links:
+      - eureka
+
+  service1:
+    container_name: service1
+    build: service
+    image: service
+    depends_on:
+      - eureka
+    links:
+      - eureka
+
+  service2:
+    container_name: service2
+    build: service
+    image: service
+    depends_on:
+      - eureka
+    links:
+      - eureka
+
+  eureka:
+    container_name: eureka
+    image: fearlessfara/eurekaserver
+    ports:
+    - 8761:8761
