@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     @Autowired
-    FeignHelper feignHelper;
-
+    SimpleClientHelper simpleClientHelper;
 
     @GetMapping("get")
     public String get() {
-        String serviceHostname = feignHelper.get();
+        String serviceHostname = simpleClientHelper.get();
         log.info("Called service with hostname: {}", serviceHostname);
         return serviceHostname;
     }

@@ -33,4 +33,4 @@ services:
     container_name: eureka
     image: fearlessfara/eurekaserver
     ports:
-    - 8761:8761
+      - 8761:8761

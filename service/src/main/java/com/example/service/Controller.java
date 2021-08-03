@@ -10,7 +10,12 @@ import java.net.UnknownHostException;
 public class Controller {
 
     @GetMapping("/get")
-    public String get() throws UnknownHostException {
-        return InetAddress.getLocalHost().getCanonicalHostName();
+    public String get() {
+        try {
+            return InetAddress.getLocalHost().getCanonicalHostName();
+        } catch (UnknownHostException uhe) {
+            return "error in hostname retrieval";
+        }
+
     }
 }
